@@ -14,8 +14,15 @@ for(let i = 0; i < 5; i++){
 
 setTimeout (noDisplayEl, 3000, gridAppend);
 let userNumber;
-let userNumberArray;
-setTimeout(askFiveNumber, 3000, userNumber, userNumberArray, 1, 60)
+let userNumberArray = [];
+let arrayRisultati = [];
+setTimeout(askFiveNumber, 4000, userNumber, userNumberArray, 1, 60)
+
+checkNumber(numeriSceltiDalPc, userNumberArray, arrayRisultati)
+
+
+
+
 
 //******FUNZIONI********//
 function getRandomNumber(min, max){
@@ -52,7 +59,7 @@ function noDisplayEl(elemento){
 function askFiveNumber (numero, listaArray, min, max){
     let i = 0;
     while(i < 5){
-        Number.parseInt(prompt("Dimmi un numero che pensi era presente!"))
+        numero = Number.parseInt(prompt("Dimmi un numero che pensi era presente!"))
         if(numero < min || numero > max || Number.isNaN(numero)){
             alert("Hai sbagliato a scrivere ti facciamo riprovare!")
         }else{
@@ -62,3 +69,10 @@ function askFiveNumber (numero, listaArray, min, max){
     }
     
 }
+
+function checkNumber(arrayA, arrayB, arrayC){
+    for(let i = 0; i < arrayB.length; i++){
+        arrayC.push(arrayA.indexOf([i]) === arrayB.values());
+    }
+    return arrayC
+} 
