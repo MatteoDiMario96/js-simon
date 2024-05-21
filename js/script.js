@@ -72,7 +72,9 @@ function askFiveNumber (numero, listaArray, min, max){
 
 function checkNumber(arrayA, arrayB, arrayC){
     for(let i = 0; i < arrayB.length; i++){
-        arrayC.push(arrayA.indexOf([i]) === arrayB.values());
+        if(arrayA.indexOf([i]).includes(arrayB.values())){
+            arrayC.push(arrayA.indexOf([i]))
+        }
     }
-    return arrayC
+    return 
 } 
