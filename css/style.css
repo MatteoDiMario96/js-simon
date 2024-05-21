@@ -4,3 +4,35 @@
     box-sizing: border-box;
 }
 
+
+main{
+    background-color: #e5b8f4;
+    height: 100vh;
+}
+main > section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50vh
+
+}
+
+article{
+    border: 2px solid black;
+    padding: 3rem;
+    font-size: 30px;
+    color: #5a0975;
+    background-color: #c147e9;
+}
+
+h1{
+    font-size: 40px;
+}
+
+h4{
+    font-size: 22px;
+}
+
+.display-none{
+    display: none;
+}
