@@ -9,16 +9,27 @@ let numeriSceltiDalPc = [];
 for(let i = 0; i < 5; i++){
     let randomNumber = getUniqueRandomNumberInt(numeriSceltiDalPc, 1, 60)
     numeriSceltiDalPc.push(getUniqueRandomNumberInt(numeriSceltiDalPc, 1, 60))
-    createEl(articleEl, gridAppend, "article", randomNumber)
+    createEl(articleEl, gridAppend, "article",numeriSceltiDalPc[i])
 }
 
 setTimeout (noDisplayEl, 3000, gridAppend);
 let userNumber;
 let userNumberArray = [];
-let arrayRisultati = [];
 setTimeout(askFiveNumber, 4000, userNumber, userNumberArray, 1, 60)
 
-checkNumber(numeriSceltiDalPc, userNumberArray, arrayRisultati)
+setTimeout(function(){
+    let arrayRisultati = checkNumber(numeriSceltiDalPc, userNumberArray)
+    const mainAppend = document.querySelector("main");
+    const newSection = document.createElement("section");
+    newSection.id = "grid";
+    mainAppend.appendChild(newSection)
+
+    for(let i = 0; i < 5; i++){
+        createEl(articleEl, newSection, "article", arrayRisultati[i] && numeriSceltiDalPc[i])
+    }
+    console.log(arrayRisultati, userNumberArray, numeriSceltiDalPc);
+}, 5000)
+
 
 
 
@@ -56,6 +67,10 @@ function noDisplayEl(elemento){
     return elemento.classList.add("display-none");
 }
 
+function displayEl(elemento){
+    return elemento.classList.add("display-inline-block");
+}
+
 function askFiveNumber (numero, listaArray, min, max){
     let i = 0;
     while(i < 5){
@@ -70,11 +85,14 @@ function askFiveNumber (numero, listaArray, min, max){
     
 }
 
-function checkNumber(arrayA, arrayB, arrayC){
-    for(let i = 0; i < arrayB.length; i++){
-        if(arrayA.indexOf([i]).includes(arrayB.values())){
-            arrayC.push(arrayA.indexOf([i]))
+function checkNumber(arrayA, arrayB){
+    const correctAnswer = [];
+    for(let i = 0; i < arrayA.length; i++){
+        if(arrayB.includes(arrayA[i])){
+            correctAnswer.push(true);
+        }else{
+            correctAnswer.push(false);
         }
     }
-    return 
+    return correctAnswer
 } 
